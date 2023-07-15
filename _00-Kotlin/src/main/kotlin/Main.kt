@@ -100,6 +100,103 @@ abstract class NumerosJavaCP(
     }
 }
 
+class Suma(
+    uno: Int,
+    dos: Int,
+) : NumerosJavaCP(uno, dos) {
+    init {
+        this.numeroUno;
+        this.numeroDos;
+    }
+
+    constructor(
+        uno: Int?,
+        dos: Int,
+        tres: Int,
+    ) : this(
+        if (uno == null ) 0 else uno, dos) {
+
+        //this(uno, dos)
+    }
+    constructor(
+        uno: Int,
+        dos: Int?,
+        tres: Int,
+    ) : this(
+        if (dos == null ) 0 else uno, uno) {
+
+        //this(uno, dos)
+    }
+    constructor(
+        uno: Int?,
+        dos: Int?,
+    ) : this(
+        if (uno == null ) 0 else uno, if (dos == null ) 0 else dos
+
+    )
+    public fun sumar(): Int {
+        //clase 30 de mayo.
+        val arregloEstatico: Array<Int> = arrayOf<Int>(1, 2, 3)
+        println(arregloEstatico)
+        val arregloDinamico:ArrayList<Int> = arrayListOf<Int>(1, 2, 3,4,5,6,7,8,9,10)
+        println(arregloDinamico)
+        arregloDinamico.add(11)
+        arregloDinamico.add(12)
+        println(arregloDinamico)
+        val respuestaForEach: Unit = arregloDinamico
+            .forEach { valorActual: Int ->
+                println("Valor iteracion: ${valorActual}")
+            }
+        arregloDinamico.forEach{ println(it)}
+        arregloEstatico.forEachIndexed { indice: Int, valorActual: Int ->
+            println("Valor ${valorActual} Indice: ${indice}")
+        }
+        println(respuestaForEach)
+        //operador map
+        val respuestaMap: List<Double> = arregloDinamico
+            .map { valorActual: Int ->
+                return@map valorActual.toDouble() + 100.00
+            }
+        println(respuestaMap)
+        val respuestaMapDos = arregloDinamico.map { it + 15 }
+        //operador filter
+        val respuestaFilter = arregloDinamico
+            .filter { valorActual: Int ->
+                val mayoresACinco: Boolean = valorActual > 5
+                return@filter mayoresACinco
+            }
+        println(respuestaFilter)
+        val respuestaFilterDos = arregloDinamico.filter { it <= 5 }
+        println(respuestaFilterDos)
+        //operador any all
+        val respuestaAny: Boolean = arregloDinamico
+            .any { valorActual: Int ->
+                return@any valorActual > 5
+            }
+        println(respuestaAny)
+        val respuestaAll: Boolean = arregloDinamico
+            .all { valorActual: Int ->
+                return@all valorActual > 5
+            }
+        println(respuestaAll)
+        val respuestaReduce = arregloDinamico
+            .reduce { acumulado: Int, valorActual: Int ->
+                return@reduce acumulado + valorActual
+            }
+        println(respuestaReduce)
+
+        var total = numeroUno + numeroDos
+        return total
+    }
+
+//this(uno, dos)
+    }
+
+
+
+
+
+
 
 
 

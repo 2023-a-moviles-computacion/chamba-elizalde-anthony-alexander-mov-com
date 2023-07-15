@@ -1,0 +1,122 @@
+[
+  {
+    "name": "Ahri",
+    "description": "Ahri es una espíritu zorro vastaya con la capacidad de manipular la esencia mágica a su alrededor. Es una campeona muy popular por su agilidad y habilidades de control de masas.",
+    "releaseYear": 2011,
+    "roles": [
+      {
+        "name": "Mid",
+        "description": "El rol de Mid Lane se destaca por tener un control importante del mapa y realizar emboscadas a los oponentes en la línea del medio.",
+        "icon": "mid_icon.png"
+  }
+  ]
+  },
+  {
+  "name": "Lee Sin",
+  "description": "Lee Sin es un monje ciego que utiliza su habilidad marcial y su percepción sónica para enfrentarse a sus enemigos. Es uno de los campeones más populares y versátiles del juego.",
+  "releaseYear": 2011,
+  "roles": [
+  {
+  "name": "Jungle",
+  "description": "El rol de Jungla se encarga de neutralizar monstruos en la selva y brindar apoyo a las diferentes líneas del mapa.",
+  "icon": "jungle_icon.png"
+  }
+  ]
+  },
+  {
+  "name": "Ashe",
+  "description": "Ashe es una arquera de hielo que utiliza su arco para disparar flechas congelantes a sus enemigos. Es una campeona de daño a distancia y control de masas.",
+  "releaseYear": 2009,
+  "roles": [
+  {
+  "name": "ADC",
+  "description": "El rol de ADC (Ataque a distancia) se encarga de infligir daño constante a los enemigos desde la línea inferior del mapa.",
+  "icon": "adc_icon.png"
+  }
+  ]
+  },
+  {
+  "name": "Garen",
+  "description": "Garen es un guerrero valiente y resistente que utiliza su espada y su armadura para enfrentarse a sus enemigos. Es un campeón de combate cuerpo a cuerpo y resistencia.",
+  "releaseYear": 2010,
+  "roles": [
+  {
+  "name": "Top",
+  "description": "El rol de Top Lane se destaca por ser una línea de combate cuerpo a cuerpo y tener un impacto importante en las peleas de equipo.",
+  "icon": "top_icon.png"
+  }
+  ]
+  },
+  {
+  "name": "Lux",
+  "description": "Lux es una maga de luz que utiliza sus habilidades mágicas para dañar y controlar a sus enemigos. Es una campeona de daño a distancia y utilidad.",
+  "releaseYear": 2010,
+  "roles": [
+  {
+  "name": "Support",
+  "description": "El rol de Support se encarga de proteger y apoyar a su equipo, brindando utilidad y control de masas en las peleas de equipo.",
+  "icon": "support_icon.png"
+  }
+  ]
+  },
+  {
+  "name": "Yasuo",
+  "description": "Yasuo es un espadachín ágil y letal que utiliza su espada y su habilidad para controlar el viento. Es un campeón de alta movilidad y daño explosivo.",
+  "releaseYear": 2013,
+  "roles": [
+  {
+  "name": "Mid",
+  "description": "El rol de Mid Lane se destaca por tener un control importante del mapa y realizar emboscadas a los oponentes en la línea del medio.",
+  "icon": "mid_icon.png"
+  }
+  ]
+  },
+  {
+  "name": "Ezreal",
+  "description": "Ezreal es un aventurero y explorador que utiliza su arco mágico para disparar proyectiles místicos a sus enemigos. Es un campeón de daño a distancia y movilidad.",
+  "releaseYear": 2010,
+  "roles": [
+  {
+  "name": "ADC",
+  "description": "El rol de ADC (Ataque a distancia) se encarga de infligir daño constante a los enemigos desde la línea inferior del mapa.",
+  "icon": "adc_icon.png"
+  }
+  ]
+  },
+  {
+  "name": "Zed",
+  "description": "Zed es un asesino sombrío que utiliza sus sombras y su habilidad con las espadas para eliminar a sus enemigos. Es un campeón de alta movilidad y daño explosivo.",
+  "releaseYear": 2012,
+  "roles": [
+  {
+  "name": "Mid",
+  "description": "El rol de Mid Lane se destaca por tener un control importante del mapa y realizar emboscadas a los oponentes en la línea del medio.",
+  "icon": "mid_icon.png"
+  }
+  ]
+  },
+  {
+  "name": "Thresh",
+  "description": "Thresh es un guardián de las almas que utiliza su cadena y su linterna para atrapar y controlar a sus enemigos. Es un campeón de utilidad y control de masas.",
+  "releaseYear": 2013,
+  "roles": [
+  {
+  "name": "Support",
+  "description": "El rol de Support se encarga de proteger y apoyar a su equipo, brindando utilidad y control de masas en las peleas de equipo.",
+  "icon": "support_icon.png"
+  }
+  ]
+  },
+  {
+  "name": "Darius",
+  "description": "Darius es un guerrero poderoso y temible que utiliza su hacha y su fuerza bruta para aplastar a sus enemigos. Es un campeón de combate cuerpo a cuerpo y daño explosivo.",
+  "releaseYear": 2012,
+  "roles": [
+  {
+  "name": "Top",
+  "description": "El rol de Top Lane se destaca por ser una línea de combate cuerpo a cuerpo y tener un impacto importante en las peleas de equipo.",
+  "icon": "top_icon.png"
+  }
+  ]
+  }
+]

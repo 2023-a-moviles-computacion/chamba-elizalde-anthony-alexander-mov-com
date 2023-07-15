@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+   <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <EditText
+            android:id="@+id/nombreChampEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nombre" />
+
+        <EditText
+            android:id="@+id/descripcionChampEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Descripción" />
+
+        <EditText
+            android:id="@+id/releaseYearEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Año de salida" />
+
+        <EditText
+            android:id="@+id/champFirstRole"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Rol del campeón" />
+
+    </LinearLayout>

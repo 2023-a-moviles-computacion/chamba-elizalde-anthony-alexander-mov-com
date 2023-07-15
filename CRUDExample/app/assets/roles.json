@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Top",
+    "description": "El rol de Top Lane se caracteriza por ser un campeón resistente y capaz de enfrentarse a los oponentes en la línea superior del mapa.",
+    "icon": "top_icon.png"
+  },
+  {
+    "name": "Jungle",
+    "description": "El rol de Jungla se encarga de neutralizar monstruos en la selva y brindar apoyo a las diferentes líneas del mapa.",
+    "icon": "jungle_icon.png"
+  },
+  {
+    "name": "Mid",
+    "description": "El rol de Mid Lane se destaca por tener un control importante del mapa y realizar emboscadas a los oponentes en la línea del medio.",
+    "icon": "mid_icon.png"
+  },
+  {
+    "name": "ADC",
+    "description": "El rol de AD Carry (ADC) se centra en infligir daño a larga distancia y es fundamental en el late game para llevar al equipo a la victoria.",
+    "icon": "adc_icon.png"
+  },
+  {
+    "name": "Support",
+    "description": "El rol de Soporte es responsable de proteger y ayudar al ADC y al equipo en general, brindando control de masas y sanación.",
+    "icon": "support_icon.png"
+  }
+]
