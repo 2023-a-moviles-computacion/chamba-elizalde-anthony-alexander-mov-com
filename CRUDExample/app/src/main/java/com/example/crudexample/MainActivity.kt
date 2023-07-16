@@ -8,8 +8,8 @@ import com.example.debercrud.models.*
 fun main() {
     // Ruta del archivo JSON de campeones y roles
     //reemplazar la ruta, con la ruta absoluta de su equipo, esta corresponde a mi ordenador
-    val championsFile = "/home/noobgrammer1/Documents/8vo Semestre/AppMoviles/RepositorioMoviles/chamba-elizalde-anthony-alexander-mov-com/CRUDExample/app/assets/champs.json"
-    val rolesFile = "/home/noobgrammer1/Documents/8vo Semestre/AppMoviles/RepositorioMoviles/chamba-elizalde-anthony-alexander-mov-com/CRUDExample/app/assets/roles.json"
+    val championsFile = "/home/noobgrammer1/Documents/8vo/AppMoviles/RepositorioMoviles/chamba-elizalde-anthony-alexander-mov-com/CRUDExample/app/assets/champs.json"
+    val rolesFile = "/home/noobgrammer1/Documents/8vo/AppMoviles/RepositorioMoviles/chamba-elizalde-anthony-alexander-mov-com/CRUDExample/app/assets/roles.json"
 
     var option: Int
         do {
