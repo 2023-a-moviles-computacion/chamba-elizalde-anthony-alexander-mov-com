@@ -3,6 +3,7 @@ package com.example.rolcampeon
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
@@ -15,19 +16,27 @@ import com.example.rolcampeon.models.Role
 
 class RolesActivity : AppCompatActivity() {
 
-    val array = BDRoles.roles
-    val selectedItemID = 0
+    var array: List<Role> = emptyList() // Inicializa con una lista vacía o algún valor predeterminado
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_roles)
 
-        //Adaptador personalizado
         val listView = findViewById<ListView>(R.id.lv_roles)
+
+        // Llama a obtenerRoles y espera a que se complete antes de continuar
+        val rolesFuture = BDRoles.obtenerRoles()
+        try {
+            array = rolesFuture.get() // Esto bloqueará hasta que se complete la operación
+        } catch (e: Exception) {
+            // Maneja cualquier excepción que pueda ocurrir al obtener los roles
+            Log.e("Firebase", "Error al obtener roles: ${e.message}")
+        }
+
         val adaptador = object : ArrayAdapter<Role>(
             this,
             R.layout.list_item_role,
-            array
+            array.toTypedArray()
         ) {
             override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
                 val view = convertView ?: LayoutInflater.from(context).inflate(R.layout.list_item_role, parent, false)
@@ -42,14 +51,21 @@ class RolesActivity : AppCompatActivity() {
                 return view
             }
         }
+
         listView.adapter = adaptador
-        adaptador.notifyDataSetChanged()
+
         val btnAddListView = findViewById<Button>(R.id.btn_anadir_list_view)
-        btnAddListView.setOnClickListener(){
+        btnAddListView.setOnClickListener() {
             agregarNuevoRol()
         }
+
         registerForContextMenu(listView)
     }
+
+
+
+
+
     override fun onCreateContextMenu(
         menu: ContextMenu?,
         v: View?,
@@ -97,11 +113,22 @@ class RolesActivity : AppCompatActivity() {
     }
 
     fun eliminarElemento(position: Int) {
-        array.removeAt(position)
-        val listView = findViewById<ListView>(R.id.lv_roles)
-        val adaptador = listView.adapter as ArrayAdapter<Role>
-        adaptador.notifyDataSetChanged()
+        // Asegúrate de que array sea una MutableList<Role>
+        val array = BDRoles.obtenerRoles().get() ?: mutableListOf()
+
+        // Verifica si la posición es válida
+        if (position >= 0 && position < array.size) {
+            // Elimina el elemento localmente
+            array.removeAt(position)
+
+
+
+            val listView = findViewById<ListView>(R.id.lv_roles)
+            val adaptador = listView.adapter as ArrayAdapter<Role>
+            adaptador.notifyDataSetChanged()
+        }
     }
+
 
     private fun agregarNuevoRol() {
         val dialogBuilder = AlertDialog.Builder(this)

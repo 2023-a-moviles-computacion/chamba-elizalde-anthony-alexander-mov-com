@@ -1,74 +1,87 @@
 package com.example.rolcampeon.data
 
+import android.util.Log
 import com.example.rolcampeon.models.Role
+import com.google.firebase.database.*
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
+import java.util.concurrent.CompletableFuture
 
 class BDRoles {
     companion object {
-        val roles = mutableListOf(
-            Role(
-                "Top",
-                "El rol de Top Lane se caracteriza por ser un campeón resistente y capaz de enfrentarse a los oponentes en la línea superior del mapa.",
-                "top_icon.png"
-            ),
-            Role(
-                "Jungle",
-                "El rol de Jungla se encarga de neutralizar monstruos en la selva y brindar apoyo a las diferentes líneas del mapa.",
-                "jungle_icon.png"
-            ),
-            Role(
-                "Mid",
-                "El rol de Mid Lane se destaca por tener un control importante del mapa y realizar emboscadas a los oponentes en la línea del medio.",
-                "mid_icon.png"
-            ),
-            Role(
-                "ADC",
-                "El rol de AD Carry (ADC) se centra en infligir daño a larga distancia y es fundamental en el late game para llevar al equipo a la victoria.",
-                "adc_icon.png"
-            ),
-            Role(
-                "Support",
-                "El rol de Soporte es responsable de proteger y ayudar al ADC y al equipo en general, brindando control de masas y sanación.",
-                "support_icon.png"
-            )
-        )
+        private val database: DatabaseReference = Firebase.database.reference.child("roles")
 
+        // Obtener todos los roles desde Firebase
+        fun obtenerRoles(): CompletableFuture<MutableList<Role>> {
+            val future = CompletableFuture<MutableList<Role>>()
 
-        // Obtener todos los roles
-        fun obtenerRoles(): List<Role> {
-            return roles.toList()
+            database.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val rolesList = mutableListOf<Role>()
+                    for (roleSnapshot in snapshot.children) {
+                        val role = roleSnapshot.getValue(Role::class.java)
+                        Log.d("Firebase", "Role encontrado: ${role?.name}, ${role?.description}")
+
+                        role?.let { rolesList.add(it) }
+                    }
+                    future.complete(rolesList)
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    future.completeExceptionally(error.toException())
+                }
+            })
+
+            return future
+        }
+        // Obtener un rol por su nombre desde Firebase
+        fun obtenerRolesPorNombre(nombre: String, callback: (List<Role>) -> Unit) {
+            database.orderByChild("name").equalTo(nombre)
+                .addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        val rolesList = mutableListOf<Role>()
+                        for (roleSnapshot in snapshot.children) {
+                            val role = roleSnapshot.getValue(Role::class.java)
+                            Log.d("Firebase", "Champ encontrado: ${role?.name}, ${role?.description}")
+
+                            role?.let { rolesList.add(it) }
+                        }
+                        callback(rolesList)
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+                        // Manejar el error aquí si es necesario
+                    }
+                })
         }
 
-        // Obtener un rol por su nombre
-        fun obtenerRolesPorNombre(nombre: String): List<Role> {
-            val foundRoles = roles.filter { it.name == nombre }
-            return if (foundRoles.isNotEmpty()) {
-                foundRoles
-            } else {
-                roles
-            }
-        }
-
-
-        // Agregar un nuevo rol
+        // Agregar un nuevo rol a Firebase
         fun agregarRol(rol: Role) {
-            roles.add(rol)
+            val newRoleRef = database.push()
+            newRoleRef.setValue(rol)
         }
 
-        // Actualizar un rol existente por su nombre
+        // Actualizar un rol existente en Firebase por su nombre
         fun actualizarRol(nombre: String, nuevoRol: Role) {
-            val rolExistente = roles.find { it.name == nombre }
-            rolExistente?.let {
-                it.name = nuevoRol.name
-                it.description = nuevoRol.description
-                it.icon = nuevoRol.icon
+            obtenerRolesPorNombre(nombre) { rolesList ->
+                if (rolesList.isNotEmpty()) {
+                    val roleToUpdate = rolesList[0]
+                    val roleRef = database.child(roleToUpdate.name)
+                    roleRef.setValue(nuevoRol)
+                }
             }
         }
 
-        // Eliminar un rol por su nombre
+        // Eliminar un rol en Firebase por su nombre
         fun eliminarRol(nombre: String) {
-            roles.removeAll { it.name == nombre }
+            obtenerRolesPorNombre(nombre) { rolesList ->
+                if (rolesList.isNotEmpty()) {
+                    val roleToDelete = rolesList[0]
+                    val roleRef = database.child(roleToDelete.name)
+                    roleRef.removeValue()
+                }
+            }
         }
-
-
     }
+
 }
